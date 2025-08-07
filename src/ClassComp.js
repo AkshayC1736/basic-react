@@ -3,18 +3,18 @@ export default class ClassComp extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: "hello",
+      data: "Initial state data",
     };
   }
   Clicked() {
-    this.setState({ data: "Changed" });
+    this.setState({ data: "Changed state data" });
   }
   render() {
-    console.log(this.props);
+    console.log("render called with props", this.props);
     return (
       <div>
         <h1> class component</h1>
-        DATA:{this.state.data}
+        DATA: {this.state.data}
         <br />
         <button
           onClick={() => {

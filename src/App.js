@@ -1,6 +1,9 @@
 import "./App.css";
 
-import { User1, User2 } from "./User";
+import {
+  FunctionalComponent1,
+  FunctionalComponent2,
+} from "./FunctionalComponents";
 import ClassComp from "./ClassComp";
 import Props from "./Props";
 import Ngif from "./Ngif";
@@ -86,11 +89,11 @@ function App() {
         <button onClick={() => changeView("12")}>Pure Component</button>
       </div>
       <div className="content">
-        {selectedView === "1" ? <ClassComp name={"akshay"} /> : null}
+        {selectedView === "1" ? <ClassComp name={"sample-prop"} /> : null}
 
-        {selectedView === "2" ? <User1 /> : null}
+        {selectedView === "2" ? <FunctionalComponent1 /> : null}
 
-        {selectedView === "3" ? <User2 /> : null}
+        {selectedView === "3" ? <FunctionalComponent2 /> : null}
 
         {selectedView === "4" ? (
           <Props fun={func} name={"ak"} email="ak@test.com" />

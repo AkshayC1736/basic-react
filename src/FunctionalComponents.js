@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function User1() {
+export function FunctionalComponent1() {
   function Clicked() {
     console.log("clicked");
   }
@@ -17,7 +17,7 @@ export function User1() {
     </div>
   );
 }
-export function User2() {
+export function FunctionalComponent2() {
   let data = "test";
   let [testData, setTestData] = useState(0);
   function UpdateData() {
