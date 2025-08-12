@@ -16,7 +16,8 @@ import Arr from "./Array";
 import Child from "./Child";
 import Pure from "./PureComponent";
 import Hooks1 from "./Hooks1";
-
+import ParentExample from "./contextExample/ParentExample";
+import { AppContext } from "./contextExample/Context";
 function App() {
   let [selectedView, setSelectedView] = useState("1");
 
@@ -65,6 +66,9 @@ function App() {
       case "12":
         setSelectedView("12");
         break;
+      case "13":
+        setSelectedView("13");
+        break;
       default:
         setSelectedView("1");
     }
@@ -88,6 +92,7 @@ function App() {
         <button onClick={() => changeView("9")}>Styles</button>
         <button onClick={() => changeView("10")}>Arrays</button>
         <button onClick={() => changeView("12")}>Pure Component</button>
+        <button onClick={() => changeView("13")}>Context Hook Example</button>
       </div>
       <div className="content">
         {selectedView === "1" ? <ClassComp name={"sample-prop"} /> : null}
@@ -125,6 +130,11 @@ function App() {
           <Child name={"Tom"} output={outputFromChild} />
         ) : null}
         {selectedView === "12" ? <Pure /> : null}
+        {selectedView === "13" ? (
+          <AppContext.Provider value="test-context-data">
+            <ParentExample />
+          </AppContext.Provider>
+        ) : null}
       </div>
     </div>
   );
