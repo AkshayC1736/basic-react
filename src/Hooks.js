@@ -24,7 +24,6 @@ export default function Hooks() {
 
   return (
     <div>
-      <h1>Hooks in react</h1>
       <p>data:{data}</p>
       <p>data1:{data1}</p>
       <button

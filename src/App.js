@@ -15,6 +15,7 @@ import Style from "./Style";
 import Arr from "./Array";
 import Child from "./Child";
 import Pure from "./PureComponent";
+import Hooks1 from "./Hooks1";
 
 function App() {
   let [selectedView, setSelectedView] = useState("1");
@@ -104,7 +105,20 @@ function App() {
         {selectedView === "6" ? <Form /> : null}
 
         {selectedView === "7" ? <ClassLifeCycle /> : null}
-        {selectedView === "8" ? <Hooks /> : null}
+        {selectedView === "8" ? (
+          <div>
+            <h1>Hooks in react</h1>
+            <div>
+              <h2> Example 1:</h2>
+              <Hooks />
+            </div>
+            <br />
+            <div>
+              <h2> Example 2:</h2>
+              <Hooks1 />
+            </div>
+          </div>
+        ) : null}
         {selectedView === "9" ? <Style /> : null}
         {selectedView === "10" ? <Arr /> : null}
         {selectedView === "11" ? (
