@@ -18,6 +18,9 @@ import Pure from "./PureComponent";
 import Hooks1 from "./Hooks1";
 import ParentExample from "./contextExample/ParentExample";
 import { AppContext } from "./contextExample/Context";
+import UseRefExample from "./useRefExample";
+import UseMemoHookExample from "./UsememoHookExample";
+import ParentButton from "./forwardRefExample/ParentButton";
 function App() {
   let [selectedView, setSelectedView] = useState("1");
 
@@ -69,6 +72,15 @@ function App() {
       case "13":
         setSelectedView("13");
         break;
+      case "14":
+        setSelectedView("14");
+        break;
+      case "15":
+        setSelectedView("15");
+        break;
+      case "16":
+        setSelectedView("16");
+        break;
       default:
         setSelectedView("1");
     }
@@ -93,6 +105,9 @@ function App() {
         <button onClick={() => changeView("10")}>Arrays</button>
         <button onClick={() => changeView("12")}>Pure Component</button>
         <button onClick={() => changeView("13")}>Context Hook Example</button>
+        <button onClick={() => changeView("14")}>useRef Hook Example</button>
+        <button onClick={() => changeView("15")}>useMemo Hook Example</button>
+        <button onClick={() => changeView("16")}>forwardRef Example</button>
       </div>
       <div className="content">
         {selectedView === "1" ? <ClassComp name={"sample-prop"} /> : null}
@@ -135,6 +150,9 @@ function App() {
             <ParentExample />
           </AppContext.Provider>
         ) : null}
+        {selectedView === "14" ? <UseRefExample /> : null}
+        {selectedView === "15" ? <UseMemoHookExample /> : null}
+        {selectedView === "16" ? <ParentButton /> : null}
       </div>
     </div>
   );
