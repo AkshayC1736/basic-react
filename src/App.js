@@ -21,6 +21,13 @@ import { AppContext } from "./contextExample/Context";
 import UseRefExample from "./useRefExample";
 import UseMemoHookExample from "./UsememoHookExample";
 import ParentButton from "./forwardRefExample/ParentButton";
+import ControlledComponent from "./ControlledComponent";
+import Wrapper from "./HighOrderComponent/Wrapper";
+import Counter from "./HighOrderComponent/Counter";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import UserDetails from "./Pages/UserDetails";
 function App() {
   let [selectedView, setSelectedView] = useState("1");
 
@@ -81,6 +88,15 @@ function App() {
       case "16":
         setSelectedView("16");
         break;
+      case "17":
+        setSelectedView("17");
+        break;
+      case "18":
+        setSelectedView("18");
+        break;
+      case "19":
+        setSelectedView("19");
+        break;
       default:
         setSelectedView("1");
     }
@@ -108,6 +124,13 @@ function App() {
         <button onClick={() => changeView("14")}>useRef Hook Example</button>
         <button onClick={() => changeView("15")}>useMemo Hook Example</button>
         <button onClick={() => changeView("16")}>forwardRef Example</button>
+        <button onClick={() => changeView("17")}>
+          Controlled Component Example
+        </button>
+        <button onClick={() => changeView("18")}>
+          High Order Component Example
+        </button>
+        <button onClick={() => changeView("19")}>Routing Example</button>
       </div>
       <div className="content">
         {selectedView === "1" ? <ClassComp name={"sample-prop"} /> : null}
@@ -153,6 +176,29 @@ function App() {
         {selectedView === "14" ? <UseRefExample /> : null}
         {selectedView === "15" ? <UseMemoHookExample /> : null}
         {selectedView === "16" ? <ParentButton /> : null}
+        {selectedView === "17" ? <ControlledComponent /> : null}
+        {selectedView === "18" ? (
+          <Wrapper counter={Counter} controlled={ControlledComponent} />
+        ) : null}
+        {selectedView === "19" ? (
+          <BrowserRouter>
+            <Link to="/home">Home Page</Link>
+            &nbsp; &nbsp;
+            <Link to="/about">about Page</Link>
+            &nbsp; &nbsp;
+            <Link to="/user-details/1">User Details</Link>
+            <div>
+              <Routes>
+                <Route path="/home" element={<Home />}></Route>
+                <Route path="/about" element={<About />}></Route>
+                <Route
+                  path="/user-details/:id"
+                  element={<UserDetails />}
+                ></Route>
+              </Routes>
+            </div>
+          </BrowserRouter>
+        ) : null}
       </div>
     </div>
   );
