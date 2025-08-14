@@ -28,6 +28,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import UserDetails from "./Pages/UserDetails";
+import StateManagement from "./StateManagement";
 function App() {
   let [selectedView, setSelectedView] = useState("1");
 
@@ -97,6 +98,9 @@ function App() {
       case "19":
         setSelectedView("19");
         break;
+      case "20":
+        setSelectedView("20");
+        break;
       default:
         setSelectedView("1");
     }
@@ -131,6 +135,9 @@ function App() {
           High Order Component Example
         </button>
         <button onClick={() => changeView("19")}>Routing Example</button>
+        <button onClick={() => changeView("20")}>
+          State management Example
+        </button>
       </div>
       <div className="content">
         {selectedView === "1" ? <ClassComp name={"sample-prop"} /> : null}
@@ -199,6 +206,7 @@ function App() {
             </div>
           </BrowserRouter>
         ) : null}
+        {selectedView === "20" ? <StateManagement /> : null}
       </div>
     </div>
   );
