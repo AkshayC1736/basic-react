@@ -7,7 +7,12 @@ function ChildExample() {
   const context = useContext(AppContext);
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   return (
-    <div style={{ paddingLeft: 20, backgroundColor: "skyblue" }}>
+    <div
+      style={{
+        paddingLeft: 20,
+        backgroundColor: darkMode ? "blue" : "skyblue",
+      }}
+    >
       <h4>Child Component</h4>
       <div style={{ paddingLeft: 20, backgroundColor: "lightgrey" }}>
         {context}
@@ -16,7 +21,7 @@ function ChildExample() {
         <p>
           The current theme is <b>{darkMode ? "Dark" : "Light"}</b>
         </p>
-        <button onClick={toggleDarkMode}>Toggle Theme</button>
+        <button onClick={toggleDarkMode}>Toggle Theme in child</button>
       </div>
     </div>
   );

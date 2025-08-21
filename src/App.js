@@ -29,9 +29,10 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import UserDetails from "./Pages/UserDetails";
 import StateManagement from "./StateManagement";
+import ThemeWrapper from "./contextExample/ThemeWrapper";
 
 function App() {
-  let [selectedView, setSelectedView] = useState("1");
+  let [selectedView, setSelectedView] = useState("13");
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -114,7 +115,7 @@ function App() {
         setSelectedView("20");
         break;
       default:
-        setSelectedView("1");
+        setSelectedView("13");
     }
   }
   return (
@@ -195,6 +196,13 @@ function App() {
               </AppContext.Provider>
             </ThemeContext.Provider>
             <br />
+            <div>
+              <ThemeWrapper>
+                <h5> Cleaner way</h5>
+                <ParentExample />
+              </ThemeWrapper>
+              <br />
+            </div>
           </>
         ) : null}
         {selectedView === "14" ? <UseRefExample /> : null}
