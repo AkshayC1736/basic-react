@@ -9,7 +9,7 @@ import Props from "./Props";
 import Ngif from "./Ngif";
 import Form from "./Form";
 import Hooks from "./Hooks";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ClassLifeCycle from "./ClassLifeCycle";
 import Style from "./Style";
 import Arr from "./Array";
@@ -17,7 +17,7 @@ import Child from "./Child";
 import Pure from "./PureComponent";
 import Hooks1 from "./Hooks1";
 import ParentExample from "./contextExample/ParentExample";
-import { AppContext } from "./contextExample/Context";
+import { AppContext, ThemeContext } from "./contextExample/Context";
 import UseRefExample from "./useRefExample";
 import UseMemoHookExample from "./UsememoHookExample";
 import ParentButton from "./forwardRefExample/ParentButton";
@@ -29,8 +29,20 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import UserDetails from "./Pages/UserDetails";
 import StateManagement from "./StateManagement";
+
 function App() {
   let [selectedView, setSelectedView] = useState("1");
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  // useMemo to memoize the value object so it only changes when `darkMode` changes
+  const themeValue = useMemo(
+    () => ({
+      darkMode,
+      toggleDarkMode: () => setDarkMode((prev) => !prev),
+    }),
+    [darkMode]
+  );
 
   function outputFromChild(data) {
     alert(data);
@@ -176,9 +188,14 @@ function App() {
         ) : null}
         {selectedView === "12" ? <Pure /> : null}
         {selectedView === "13" ? (
-          <AppContext.Provider value="test-context-data">
-            <ParentExample />
-          </AppContext.Provider>
+          <>
+            <ThemeContext.Provider value={themeValue}>
+              <AppContext.Provider value="test-context-data">
+                <ParentExample />
+              </AppContext.Provider>
+            </ThemeContext.Provider>
+            <br />
+          </>
         ) : null}
         {selectedView === "14" ? <UseRefExample /> : null}
         {selectedView === "15" ? <UseMemoHookExample /> : null}
