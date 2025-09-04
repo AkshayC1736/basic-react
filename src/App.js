@@ -30,6 +30,8 @@ import About from "./Pages/About";
 import UserDetails from "./Pages/UserDetails";
 import StateManagement from "./StateManagement";
 import ThemeWrapper from "./contextExample/ThemeWrapper";
+import UseMemoExample1 from "./UseMemoExample1";
+import UseCallBackExample from "./UseCallBackExample";
 
 function App() {
   let [selectedView, setSelectedView] = useState("13");
@@ -114,6 +116,9 @@ function App() {
       case "20":
         setSelectedView("20");
         break;
+      case "21":
+        setSelectedView("21");
+        break;
       default:
         setSelectedView("13");
     }
@@ -151,6 +156,7 @@ function App() {
         <button onClick={() => changeView("20")}>
           State management Example
         </button>
+        <button onClick={() => changeView("21")}>useCallBack Example</button>
       </div>
       <div className="content">
         {selectedView === "1" ? <ClassComp name={"sample-prop"} /> : null}
@@ -206,7 +212,13 @@ function App() {
           </>
         ) : null}
         {selectedView === "14" ? <UseRefExample /> : null}
-        {selectedView === "15" ? <UseMemoHookExample /> : null}
+        {selectedView === "15" ? (
+          <div>
+            <UseMemoHookExample />
+            <br />
+            <UseMemoExample1 />
+          </div>
+        ) : null}
         {selectedView === "16" ? <ParentButton /> : null}
         {selectedView === "17" ? <ControlledComponent /> : null}
         {selectedView === "18" ? (
@@ -232,6 +244,7 @@ function App() {
           </BrowserRouter>
         ) : null}
         {selectedView === "20" ? <StateManagement /> : null}
+        {selectedView === "21" ? <UseCallBackExample /> : null}
       </div>
     </div>
   );
